@@ -1,10 +1,9 @@
-import Navbar from './components/Navigation/NavBar'
-import Drawer from './components/Navigation/Drawer'
+import Rotas from "./rotas";
 
 function App() {
   return (
-    <Drawer />
-  )
+    <Rotas />
+  );
 }
 
-export default App
+export default App;
