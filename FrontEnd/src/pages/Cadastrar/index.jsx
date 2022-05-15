@@ -1,40 +1,30 @@
-import "./styles.scss";
-import { useState } from "react";
-import { auth } from "../../auth/firebase-config";
+import React, { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { Link, useNavigate } from "react-router-dom";
 import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-  signOut,
-} from "firebase/auth";
-import { Link } from "react-router-dom";
+  auth,
+  registerWithEmailAndPassword,
+  signInWithGoogle,
+} from "../../auth/firebase";
 import Button from "../../components/Button";
-
 import TextField from "@mui/material/TextField";
+
 export default function Cadastrar() {
-  const [registerEmail, setRegisterEmail] = useState("");
-  const [registerPassword, setRegisterPassword] = useState("");
-  const [loginEmail, setLoginEmail] = useState("");
-  const [loginPassword, setLoginPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [user, loading, error] = useAuthState(auth);
+  const navigate = useNavigate();
 
-  const [user, setUser] = useState({});
-  onAuthStateChanged(auth, (currentUser) => {
-    setUser(currentUser);
-  });
-
-  const register = async () => {
-    try {
-      const user = await createUserWithEmailAndPassword(
-        auth,
-        registerEmail,
-        registerPassword
-      );
-      console.log(user);
-    } catch (error) {
-      console.log(error.message);
-    }
+  const register = () => {
+    if (!name) alert("Please enter name");
+    registerWithEmailAndPassword(name, email, password);
   };
 
+  useEffect(() => {
+    if (loading) return;
+    if (user) navigate("/movie");
+  }, [user, loading]);
 
   return (
     <div>
@@ -54,22 +44,28 @@ export default function Cadastrar() {
               </div>
               <div className="container-input">
                 <TextField
+                  label="Nome"
+                  variant="filled"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+
+                <TextField
                   label="Email"
                   variant="filled"
-                  onChange={(event) => {
-                    setRegisterEmail(event.target.value);
-                  }}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
                 <TextField
                   label="Senha"
                   type="password"
                   variant="filled"
-                  onChange={(event) => {
-                    setRegisterPassword(event.target.value);
-                  }}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
               <Button onClick={register} text="Cadastrar" />
+              <Button onClick={signInWithGoogle} text="Cadastrar com Googler" />
             </div>
           </div>
         </div>

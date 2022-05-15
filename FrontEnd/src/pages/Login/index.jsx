@@ -1,39 +1,29 @@
 import "./styles.scss";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../../components/Button";
 import TextField from "@mui/material/TextField";
-import { auth } from "../../auth/firebase-config";
 import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-  signOut,
-} from "firebase/auth";
+  auth,
+  logInWithEmailAndPassword,
+  signInWithGoogle,
+} from "../../auth/firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 export default function Login() {
-  const [loginEmail, setLoginEmail] = useState("");
-  const [loginPassword, setLoginPassword] = useState("");
-  const [user, setUser] = useState({});
-  onAuthStateChanged(auth, (currentUser) => {
-    setUser(currentUser);
-  });
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [user, loading, error] = useAuthState(auth);
+  const navigate = useNavigate();
 
-  const login = async () => {
-    try {
-      const user = await signInWithEmailAndPassword(
-        auth,
-        loginEmail,
-        loginPassword
-      );
-      console.log(user);
-    } catch (error) {
-      console.log(error.message);
+  useEffect(() => {
+    if (loading) {
+      // maybe trigger a loading screen
+      return;
     }
-  };
-  const logout = async () => {
-    await signOut(auth);
-  };
+    if (user) navigate("/movie");
+  }, [user, loading]);
+
   return (
     <div className="login container">
       <div className="navbar container">
@@ -53,20 +43,20 @@ export default function Login() {
               <TextField
                 label="Email"
                 variant="filled"
-                onChange={(event) => {
-                  setLoginEmail(event.target.value);
-                }}
+                onChange={(e) => setEmail(e.target.value)}
               />
               <TextField
                 label="Senha"
                 type="password"
                 variant="filled"
-                onChange={(event) => {
-                  setLoginPassword(event.target.value);
-                }}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            <Button onClick={login} text="Enviar" />
+            <Button
+              onClick={() => logInWithEmailAndPassword(email, password)}
+              text="Enviar"
+            />
+            <Button onClick={signInWithGoogle} text="Logar com Google" />
             <div>
               <p>
                 Novo por aqui? <Link to="/cadastrar">Assine agora.</Link>
