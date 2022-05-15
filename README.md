@@ -16,6 +16,8 @@ Alunos : Renan Steiger, João henrique Rossato Filho.
 ### Run
 
 ```
+# npm install
+
 Login: teste@teste.com
 senha:123456
 
