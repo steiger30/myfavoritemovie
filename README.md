@@ -2,7 +2,7 @@
 
 
 ### Projeto desenvolvido para a disciplina de Gerência De Configuração
-Alunos : * RENAN STEIGER, * JOAO HENRIQUE ROSSATO FILHO
+Alunos : Renan Steiger, João henrique Rossato Filho.
 
 ### Tecnologias Utilizadas
 * Javascript
