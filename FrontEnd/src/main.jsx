@@ -7,7 +7,7 @@ import './styles.scss';
 ReactDOM.render(
     <React.StrictMode>
         <CssBaseline />
-        <App />
+        <Rotas />
     </React.StrictMode>,
     document.getElementById("root")
 );
