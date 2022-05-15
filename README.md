@@ -3,14 +3,14 @@
 # Projeto desenvolvido para a disciplina de Gerência De Configuração
 Alunos : RENAN STEIGER, JOAO HENRIQUE ROSSATO FILHO
 
-### Tecnologias Utilizadas
-*Javascript
-*React
-*html
-*SCSS
-*Vitejs
-*meterial ui
-*Firebase
+## Tecnologias Utilizadas
+* Javascript
+* React
+* html
+* SCSS
+* Vitejs
+* meterial ui
+* Firebase
           
 ### Run
 
