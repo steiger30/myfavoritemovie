@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Button from '@mui/material/Button';
+import Button from "../../components/Button";
 import "./styles.scss";
 
 export default function Home() {
@@ -11,7 +11,7 @@ export default function Home() {
         </div>
         <div>
           <Link to="login">
-          <Button variant="contained">Contained</Button>
+            <Button text="Entrar" />
           </Link>
         </div>
       </div>
@@ -20,6 +20,5 @@ export default function Home() {
         <p>Lorem ipsum Lorem ipsum</p>
       </div>
     </div>
-  
   );
 }

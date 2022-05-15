@@ -1,0 +1,32 @@
+.Navbar {
+    background: hsla(0, 0%, 100%, 0.001);
+    height: 40px;
+    border: 1px solid;
+}
+
+.logo {
+    font-family: 'Rubik Glitch', cursive;
+    font-size: 18px;
+    color: #d96d10;
+}
+
+.container {
+    max-width: 1024pxs;
+}
+
+.nav-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu-nav {
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-between;
+    font-family: 'Poppins', sans-serif;
+}

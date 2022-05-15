@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
+import Rotas from "./pages/Routes";
 import CssBaseline from "@mui/material/CssBaseline";
 import './styles.scss';
 
