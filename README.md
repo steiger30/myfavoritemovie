@@ -1,6 +1,6 @@
 # myfavoritemovie
 
-# Projeto desenvolvido para a disciplina de Gerência De Configuração
+## Projeto desenvolvido para a disciplina de Gerência De Configuração
 Alunos : RENAN STEIGER, JOAO HENRIQUE ROSSATO FILHO
 
 ## Tecnologias Utilizadas
